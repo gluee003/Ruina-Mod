@@ -1,0 +1,12 @@
+Durandal:
+    Name : 'Durandal'
+    Description : |-
+        Adds {BaseMana} to the mana base.
+        Whenever you play {Value1} cards, gain {Value2} |Firepower| and {Value2} |Spirit|.
+        Remove {Value2} |Firepower| and {Value2} |Spirit| after playing the third card.
+PerceptionMask:
+    Name: 'Perception-blocking Mask'
+    Description : |-
+        Adds {BaseMana} to the mana base.
+        At the start of {PlayerName}'s turn, gain {Value1} |Graze|.
+        Until after the first attack card is played each turn, attacks inflict life loss equal to their attack damage instead of dealing attack damage.

@@ -1,0 +1,24 @@
+LightAttack:
+    Name : 'Light Attack'
+    Description : 'Deal {Damage} damage.'
+LightDefense:
+    Name : 'Light Defense'
+    Description : 'Gain {Block} |Block|.'
+Pound:
+    Name : 'Pound'
+    Description : 'Deal {Damage} damage.'
+Evade:
+    Name : 'Evade'
+    Description : 'Gain {Block} |Block|.'
+ChargeAndCover:
+    Name : 'Charge and Cover'
+    Description : |-
+        Deal {Damage} damage.
+        Gain {Block} |Block|.
+    UpgradedDescription : |-
+        Deal {Damage} damage.
+        Gain {Block} |Block|.
+        Apply {Value1} |Weak|.
+FocusedStrikes:
+    Name: 'Focused Strikes'
+    Description : 'Deal {Damage} damage {Value1} times.'
