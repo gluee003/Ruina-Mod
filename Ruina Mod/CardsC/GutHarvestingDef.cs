@@ -7,18 +7,26 @@ using LBoLEntitySideloader;
 using LBoLEntitySideloader.Attributes;
 using LBoLEntitySideloader.Entities;
 using LBoLEntitySideloader.Resource;
+using Mono.Cecil;
+using Ruina_Mod.CardsBasic;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using static Ruina_Mod.BepinexPlugin;
+using LBoL.Core.Battle.BattleActions;
+using Ruina_Mod.Status;
+using LBoL.EntityLib.StatusEffects.Others;
+using LBoL.Core.StatusEffects;
+using System.Linq;
+using LBoL.Core.Units;
 
-namespace Ruina_Mod.CardsBasic
+namespace Ruina_Mod.CardsC
 {
-    public sealed class LightAttackDef : CardTemplate
+    public sealed class GutHarvestingDef : CardTemplate
     {
         public override IdContainer GetId()
         {
-            return nameof(LightAttack);
+            return nameof(GutHarvesting);
         }
 
         public override CardImages LoadCardImages()
@@ -50,24 +58,24 @@ namespace Ruina_Mod.CardsBasic
               IsPooled: true,
               HideMesuem: false,
               IsUpgradable: true,
-              Rarity: Rarity.Common,
+              Rarity: Rarity.Uncommon,
               Type: CardType.Attack,
               TargetType: TargetType.SingleEnemy,
               Colors: new List<ManaColor>() { ManaColor.Colorless },
               IsXCost: false,
-              Cost: new ManaGroup() { Any = 2 },
+              Cost: new ManaGroup() { Any = 3 },
               UpgradedCost: null,
               MoneyCost: null,
-              Damage: 10,
-              UpgradedDamage: 14,
+              Damage: 9,
+              UpgradedDamage: 11,
               Block: null,
               UpgradedBlock: null,
               Shield: null,
               UpgradedShield: null,
-              Value1: null,
+              Value1: 2,
               UpgradedValue1: null,
-              Value2: null,
-              UpgradedValue2: null,
+              Value2: 3,
+              UpgradedValue2: 4,
               Mana: null,
               UpgradedMana: null,
               Scry: null,
@@ -84,14 +92,14 @@ namespace Ruina_Mod.CardsBasic
               UltimateCost: null,
               UpgradedUltimateCost: null,
 
-              Keywords: Keyword.Basic,
-              UpgradedKeywords: Keyword.Basic,
+              Keywords: Keyword.None,
+              UpgradedKeywords: Keyword.None,
               EmptyDescription: false,
               RelativeKeyword: Keyword.None,
               UpgradedRelativeKeyword: Keyword.None,
 
-              RelativeEffects: new List<string>() { },
-              UpgradedRelativeEffects: new List<string>() { },
+              RelativeEffects: new List<string>() { "BleedStatus" },
+              UpgradedRelativeEffects: new List<string>() { "BleedStatus" },
               RelativeCards: new List<string>() { },
               UpgradedRelativeCards: new List<string>() { },
 
@@ -108,70 +116,51 @@ namespace Ruina_Mod.CardsBasic
             return cardConfig;
         }
     }
-
-    [EntityLogic(typeof(LightAttackDef))]
-    public sealed class LightAttack : Card
+    [EntityLogic(typeof(GutHarvestingDef))]
+    public sealed class GutHarvesting : Card
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
-            string text2;
-            if (this.IsUpgraded)
+            for (int i = base.Value1; i > 0; i--)
             {
-                string text;
-                switch (consumingMana.MaxColor)
-                {
-                    case ManaColor.White:
-                        text = "ShootW1";
-                        goto IL_93;
-                    case ManaColor.Blue:
-                        text = "ShootU1";
-                        goto IL_93;
-                    case ManaColor.Black:
-                        text = "ShootB1";
-                        goto IL_93;
-                    case ManaColor.Red:
-                        text = "ShootR1";
-                        goto IL_93;
-                    case ManaColor.Green:
-                        text = "ShootG1";
-                        goto IL_93;
-                    case ManaColor.Philosophy:
-                        text = "ShootP1";
-                        goto IL_93;
-                }
-                text = "ShootC1";
-            IL_93:
-                text2 = text;
+                yield return base.AttackAction(selector.SelectedEnemy);
+                //yield return new ApplyStatusEffectAction<BleedStatus>(selector.SelectedEnemy, new int?(base.Value2), null, null, null, 0f, true);
             }
-            else
+            yield break;
+        }
+
+        protected override void OnEnterBattle(BattleController battle)
+        {
+            base.ReactBattleEvent<StatisticalDamageEventArgs>(base.Battle.Player.StatisticalTotalDamageDealt, new EventSequencedReactor<StatisticalDamageEventArgs>(this.OnStatisticalDamageDealt));
+        }
+
+        private IEnumerable<BattleAction> OnStatisticalDamageDealt(StatisticalDamageEventArgs args)
+        {
+            if (base.Battle.BattleShouldEnd || args.ActionSource != this)
             {
-                string text;
-                switch (consumingMana.MaxColor)
-                {
-                    case ManaColor.White:
-                        text = "ShootW";
-                        goto IL_101;
-                    case ManaColor.Blue:
-                        text = "ShootU";
-                        goto IL_101;
-                    case ManaColor.Black:
-                        text = "ShootB";
-                        goto IL_101;
-                    case ManaColor.Red:
-                        text = "ShootR";
-                        goto IL_101;
-                    case ManaColor.Green:
-                        text = "ShootG";
-                        goto IL_101;
-                    case ManaColor.Philosophy:
-                        text = "ShootP";
-                        goto IL_101;
-                }
-                text = "ShootC";
-            IL_101:
-                text2 = text;
+                yield break;
             }
-            yield return base.AttackAction(selector, text2);
+            foreach (KeyValuePair<Unit, IReadOnlyList<DamageEventArgs>> keyValuePair in args.ArgsTable)
+            {
+                Unit unit;
+                IReadOnlyList<DamageEventArgs> readOnlyList;
+                keyValuePair.Deconstruct(out unit, out readOnlyList);
+                Unit unit2 = unit;
+                IReadOnlyList<DamageEventArgs> readOnlyList2 = readOnlyList;
+
+                foreach (DamageEventArgs damageAgs in readOnlyList2)
+                {
+                    if (unit2.IsAlive)
+                    {
+                        DamageInfo damageInfo = damageAgs.DamageInfo;
+                        if (damageInfo.DamageType == DamageType.Attack && damageInfo.Amount > 0f)
+                        {
+                            yield return new ApplyStatusEffectAction<BleedStatus>(unit2, new int?(base.Value2), null, null, null, 0f, true);
+                        }
+                    }
+                }
+            }
+            IEnumerator<KeyValuePair<Unit, IReadOnlyList<DamageEventArgs>>> enumerator = null;
             yield break;
         }
     }

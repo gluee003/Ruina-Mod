@@ -25,14 +25,14 @@ namespace Ruina_Mod.CardsBasic
         {
             var imgs = new CardImages(embeddedSource);
             imgs.AutoLoad(this, extension: ".png");
-            return imgs; ;
+            return imgs;
         }
 
         public override LocalizationOption LoadLocalization()
         {
             var loc = new GlobalLocalization(embeddedSource);
             loc.LocalizationFiles.AddLocaleFile(LBoL.Core.Locale.En, "CardsEn.yaml");
-            return loc; ;
+            return loc;
         }
 
         public override CardConfig MakeConfig()
@@ -95,12 +95,12 @@ namespace Ruina_Mod.CardsBasic
               RelativeCards: new List<string>() { },
               UpgradedRelativeCards: new List<string>() { },
 
-              Owner: null,
+              Owner: "Roland",
               ImageId: "",
               UpgradeImageId: "",
 
               Unfinished: false,
-              Illustrator: null,
+              Illustrator: "Nai_ Ga",
               SubIllustrator: new List<string>() { }
            );
 

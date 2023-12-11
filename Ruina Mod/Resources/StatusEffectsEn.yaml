@@ -1,0 +1,4 @@
+BleedStatus:
+    Name : Bleed
+    Description : "Whenever {OwnerName} attacks, they lose {Level} life, then lose 1/3 of |Bleed| stacks (rounded up)."
+    Brief : "Whenever {OwnerName} attacks, they lose life, then lose 1/3 of |Bleed| stacks (rounded up)."

@@ -22,3 +22,8 @@ ChargeAndCover:
 FocusedStrikes:
     Name: 'Focused Strikes'
     Description : 'Deal {Damage} damage {Value1} times.'
+GutHarvesting:
+    Name : 'Gut-harvesting'
+    Description : |-
+        Deal {Damage} damage {Value1} times.
+        For each hit that dealt damage, apply {Value2} |Bleed|.

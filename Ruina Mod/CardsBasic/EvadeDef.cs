@@ -96,12 +96,12 @@ namespace Ruina_Mod.CardsBasic
               RelativeCards: new List<string>() { },
               UpgradedRelativeCards: new List<string>() { },
 
-              Owner: null,
+              Owner: "Roland",
               ImageId: "",
               UpgradeImageId: "",
 
               Unfinished: false,
-              Illustrator: null,
+              Illustrator: "Nai_ Ga",
               SubIllustrator: new List<string>() { }
            );
 

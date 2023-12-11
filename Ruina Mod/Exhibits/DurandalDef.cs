@@ -59,7 +59,7 @@ namespace Ruina_Mod.Exhibits
                 IsSentinel: false,
                 Revealable: false,
                 Appearance: AppearanceType.Nowhere,
-                Owner: null,
+                Owner: "Roland",
                 LosableType: ExhibitLosableType.DebutLosable,
                 Rarity: Rarity.Shining,
                 Value1: 2,
