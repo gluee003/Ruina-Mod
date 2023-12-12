@@ -124,7 +124,6 @@ namespace Ruina_Mod.CardsC
             for (int i = base.Value1; i > 0; i--)
             {
                 yield return base.AttackAction(selector.SelectedEnemy);
-                //yield return new ApplyStatusEffectAction<BleedStatus>(selector.SelectedEnemy, new int?(base.Value2), null, null, null, 0f, true);
             }
             yield break;
         }

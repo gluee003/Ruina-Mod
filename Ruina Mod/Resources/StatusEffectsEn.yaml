@@ -2,3 +2,7 @@ BleedStatus:
     Name : Bleed
     Description : "Whenever {OwnerName} attacks, they lose {Level} life, then lose 1/3 of |Bleed| stacks (rounded up)."
     Brief : "Whenever {OwnerName} attacks, they lose life, then lose 1/3 of |Bleed| stacks (rounded up)."
+BleedMoreStatus:
+    Name : "Snake's Fang"
+    Description : "Whenever {OwnerName} applies |Bleed|, apply {Level} additional |Bleed|."
+    Brief : "Whenever {OwnerName} applies |Bleed|, apply additional |Bleed|."

@@ -22,8 +22,21 @@ ChargeAndCover:
 FocusedStrikes:
     Name: 'Focused Strikes'
     Description : 'Deal {Damage} damage {Value1} times.'
+SkitterAway:
+    Name: 'Skitter Away'
+    Description : |-
+        Gain {Value1} |Graze|.
+        Deal {Damage} damage.
+DirtyBlow:
+    Name: 'Dirty Blow'
+    Description : |-
+        Deal {Damage} damage.
+        Apply {Value1} |Bleed|.
 GutHarvesting:
     Name : 'Gut-harvesting'
     Description : |-
         Deal {Damage} damage {Value1} times.
         For each hit that dealt damage, apply {Value2} |Bleed|.
+SnakesPrey:
+    Name : "Snake's Prey"
+    Description : 'Whenever {PlayerName} applies |Bleed|, apply {Value1} additional |Bleed|.'
