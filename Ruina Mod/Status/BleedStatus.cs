@@ -79,7 +79,7 @@ namespace Ruina_Mod.Status
         }
         private IEnumerable<BattleAction> OnDamageReceived(DamageEventArgs args)
         {
-            if (args.DamageInfo.DamageType == DamageType.Attack)
+            if (args.Source.IsInTurn && args.DamageInfo.DamageType == DamageType.Attack && args.Source.GetStatusEffect<BleedStatus>() == this)
             {
                 num_attacks++;
             }

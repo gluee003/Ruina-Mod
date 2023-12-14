@@ -31,7 +31,7 @@ DirtyBlow:
     Name: 'Dirty Blow'
     Description : |-
         Deal {Damage} damage.
-        Apply {Value1} |Bleed|.
+        If the attack dealt damage, apply {Value1} |Bleed|.
 GutHarvesting:
     Name : 'Gut-harvesting'
     Description : |-
@@ -40,3 +40,10 @@ GutHarvesting:
 SnakesPrey:
     Name : "Snake's Prey"
     Description : 'Whenever {PlayerName} applies |Bleed|, apply {Value1} additional |Bleed|.'
+FlamingBat:
+    Name : 'Taste My Flaming Bat!'
+    Description : |-
+        Gain {Block} |Block|.
+        Gain {Value1} |Graze|.
+        Deal {Damage} damage.
+        Apply {Value2} |Burn|.

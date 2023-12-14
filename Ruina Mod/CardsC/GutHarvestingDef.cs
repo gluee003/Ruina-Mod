@@ -152,14 +152,13 @@ namespace Ruina_Mod.CardsC
                     if (unit2.IsAlive)
                     {
                         DamageInfo damageInfo = damageAgs.DamageInfo;
-                        if (damageInfo.DamageType == DamageType.Attack && damageInfo.Amount > 0f)
+                        if (damageInfo.Amount > 0f)
                         {
                             yield return new ApplyStatusEffectAction<BleedStatus>(unit2, new int?(base.Value2), null, null, null, 0f, true);
                         }
                     }
                 }
             }
-            IEnumerator<KeyValuePair<Unit, IReadOnlyList<DamageEventArgs>>> enumerator = null;
             yield break;
         }
     }

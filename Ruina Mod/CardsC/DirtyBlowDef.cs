@@ -20,6 +20,7 @@ using LBoL.Core.StatusEffects;
 using System.Linq;
 using LBoL.Core.Units;
 using static UnityEngine.UI.CanvasScaler;
+using UnityEngine;
 
 namespace Ruina_Mod.CardsC
 {
@@ -123,7 +124,40 @@ namespace Ruina_Mod.CardsC
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.AttackAction(selector.SelectedEnemy);
-            yield return new ApplyStatusEffectAction<BleedStatus>(selector.SelectedEnemy, new int?(base.Value1), null, null, null, 0f, true);
+            yield break;
+        }
+
+        protected override void OnEnterBattle(BattleController battle)
+        {
+            base.ReactBattleEvent<StatisticalDamageEventArgs>(base.Battle.Player.StatisticalTotalDamageDealt, new EventSequencedReactor<StatisticalDamageEventArgs>(this.OnStatisticalDamageDealt));
+        }
+
+        private IEnumerable<BattleAction> OnStatisticalDamageDealt(StatisticalDamageEventArgs args)
+        {
+            if (base.Battle.BattleShouldEnd || args.ActionSource != this)
+            {
+                yield break;
+            }
+            foreach (KeyValuePair<LBoL.Core.Units.Unit, IReadOnlyList<DamageEventArgs>> keyValuePair in args.ArgsTable)
+            {
+                LBoL.Core.Units.Unit unit;
+                IReadOnlyList<DamageEventArgs> readOnlyList;
+                keyValuePair.Deconstruct(out unit, out readOnlyList);
+                LBoL.Core.Units.Unit unit2 = unit;
+                IReadOnlyList<DamageEventArgs> readOnlyList2 = readOnlyList;
+
+                foreach (DamageEventArgs damageAgs in readOnlyList2)
+                {
+                    if (unit2.IsAlive)
+                    {
+                        DamageInfo damageInfo = damageAgs.DamageInfo;
+                        if (damageInfo.Amount > 0f)
+                        {
+                            yield return new ApplyStatusEffectAction<BleedStatus>(unit2, new int?(base.Value1), null, null, null, 0f, true);
+                        }
+                    }
+                }
+            }
             yield break;
         }
     }
