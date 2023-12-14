@@ -10,3 +10,7 @@ BurnStatus:
     Name : Burn
     Description : "At the start of {OwnerName}'s turn, take {Level} damage, then lose 1/3 of |Burn| stacks (rounded down). |Burn| cannot be blocked by |Amulet| and cannot be cleansed."
     Brief : "At the start of {OwnerName}'s turn, take damage, then lose 1/3 of |Burn| stacks (rounded down). |Burn| cannot be blocked by |Amulet| and cannot be cleansed."
+BurnMoreStatus:
+    Name : "Violent Flame"
+    Description : "Whenever {OwnerName} applies |Burn|, apply {Level} additional |Burn|."
+    Brief : "Whenever {OwnerName} applies |Burn|, apply additional |Burn|."

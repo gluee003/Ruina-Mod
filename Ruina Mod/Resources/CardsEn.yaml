@@ -47,3 +47,6 @@ FlamingBat:
         Gain {Value1} |Graze|.
         Deal {Damage} damage.
         Apply {Value2} |Burn|.
+ViolentFlame:
+    Name : "Violent Flame"
+    Description : 'Whenever {PlayerName} applies |Burn|, apply {Value1} additional |Burn|.'
