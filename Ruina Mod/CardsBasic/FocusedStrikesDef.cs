@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using static Ruina_Mod.BepinexPlugin;
+using System.Runtime.CompilerServices;
 
 namespace Ruina_Mod.CardsBasic
 {
@@ -110,8 +111,9 @@ namespace Ruina_Mod.CardsBasic
     }
 
     [EntityLogic(typeof(FocusedStrikesDef))]
-    public sealed class FocusedStrikes : Card
+    public sealed class FocusedStrikes : RuinaCard
     {
+        public AttackType attackType = AttackType.Slash;
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             base.CardGuns = new Guns(new string[]

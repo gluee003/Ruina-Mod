@@ -21,7 +21,9 @@ ChargeAndCover:
         Apply {Value1} |Weak|.
 FocusedStrikes:
     Name: 'Focused Strikes'
-    Description : 'Deal {Damage} damage {Value1} times.'
+    Description : |-
+        Deal {Damage} damage {Value1} times.
+        |Slash|
 SkitterAway:
     Name: 'Skitter Away'
     Description : |-
@@ -51,5 +53,8 @@ SetFire:
         Apply {Value1} |Burn| {Value3} times.
         Take {Value2} damage.
 ViolentFlame:
-    Name : "Violent Flame"
+    Name : 'Violent Flame'
     Description : 'Whenever {PlayerName} applies |Burn|, apply {Value1} additional |Burn|.'
+SharpenedBlade:
+    Name : 'Sharpened Blade'
+    Description : "{PlayerName}'s |Slash| attacks deal {Value1} more damage."
