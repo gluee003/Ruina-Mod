@@ -109,7 +109,6 @@ namespace Ruina_Mod.Exhibits
         {
             if (args.DamageInfo.DamageType == DamageType.Attack && base.Counter == 0)
             {
-                base.NotifyActivating();
                 args.DamageInfo = new DamageInfo(args.DamageInfo.Damage, DamageType.HpLose, isGrazed:args.DamageInfo.IsGrazed, isAccuracy:args.DamageInfo.IsAccuracy, dontBreakPerfect:args.DamageInfo.DontBreakPerfect);
                 args.AddModifier(this);
             }

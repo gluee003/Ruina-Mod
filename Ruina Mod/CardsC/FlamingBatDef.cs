@@ -65,18 +65,18 @@ namespace Ruina_Mod.CardsC
               Colors: new List<ManaColor>() { ManaColor.Colorless },
               IsXCost: false,
               Cost: new ManaGroup() { Any = 2 },
-              UpgradedCost: null,
+              UpgradedCost: new ManaGroup() { Any = 1 },
               MoneyCost: null,
               Damage: 5,
-              UpgradedDamage: 5,
-              Block: 5,
-              UpgradedBlock: 5,
+              UpgradedDamage: null,
+              Block: null,
+              UpgradedBlock: null,
               Shield: null,
               UpgradedShield: null,
-              Value1: 1,
-              UpgradedValue1: null,
-              Value2: 5,
-              UpgradedValue2: 8,
+              Value1: 5,
+              UpgradedValue1: 8,
+              Value2: null,
+              UpgradedValue2: null,
               Mana: null,
               UpgradedMana: null,
               Scry: null,
@@ -93,14 +93,14 @@ namespace Ruina_Mod.CardsC
               UltimateCost: null,
               UpgradedUltimateCost: null,
 
-              Keywords: Keyword.Block,
-              UpgradedKeywords: Keyword.Block,
+              Keywords: Keyword.None,
+              UpgradedKeywords: Keyword.None,
               EmptyDescription: false,
               RelativeKeyword: Keyword.None,
               UpgradedRelativeKeyword: Keyword.None,
 
-              RelativeEffects: new List<string>() { "Graze" , "BurnStatus" },
-              UpgradedRelativeEffects: new List<string>() { "Graze" , "BurnStatus"},
+              RelativeEffects: new List<string>() { "BurnStatus" },
+              UpgradedRelativeEffects: new List<string>() { "BurnStatus" },
               RelativeCards: new List<string>() { },
               UpgradedRelativeCards: new List<string>() { },
 
@@ -122,10 +122,8 @@ namespace Ruina_Mod.CardsC
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
-            yield return base.DefenseAction(true);
-            yield return base.BuffAction<Graze>(base.Value1, 0, 0, 0, 0.2f);
             yield return base.AttackAction(selector.SelectedEnemy);
-            yield return new ApplyStatusEffectAction<BurnStatus>(selector.SelectedEnemy, new int?(base.Value2), null, null, null, 0f, true);
+            yield return new ApplyStatusEffectAction<BurnStatus>(selector.SelectedEnemy, new int?(base.Value1), null, null, null, 0f, true);
             yield break;
         }
     }

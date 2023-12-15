@@ -43,10 +43,13 @@ SnakesPrey:
 FlamingBat:
     Name : 'Taste My Flaming Bat!'
     Description : |-
-        Gain {Block} |Block|.
-        Gain {Value1} |Graze|.
         Deal {Damage} damage.
-        Apply {Value2} |Burn|.
+        Apply {Value1} |Burn|.
+SetFire:
+    Name : 'Set Fire'
+    Description : |-
+        Apply {Value1} |Burn| {Value3} times.
+        Take {Value2} damage.
 ViolentFlame:
     Name : "Violent Flame"
     Description : 'Whenever {PlayerName} applies |Burn|, apply {Value1} additional |Burn|.'
