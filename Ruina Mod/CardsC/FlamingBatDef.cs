@@ -118,8 +118,12 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(FlamingBatDef))]
-    public sealed class FlamingBat : Card
+    public sealed class FlamingBat : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Blunt; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.AttackAction(selector.SelectedEnemy);

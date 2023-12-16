@@ -118,8 +118,12 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(SkitterAwayDef))]
-    public sealed class SkitterAway : Card
+    public sealed class SkitterAway : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Blunt; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.BuffAction<Graze>(base.Value1, 0, 0, 0, 0.2f);

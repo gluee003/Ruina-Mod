@@ -83,7 +83,6 @@ namespace Ruina_Mod.Status
         {
             if (args.ActionSource is RuinaCard card && Owner.IsInTurn && card.CardType == CardType.Attack)
             {
-                Debug.Log($"{card} {card.attackType}");
                 if (card.attackType == AttackType.Slash)
                 {
                     args.DamageInfo = args.DamageInfo.IncreaseBy(base.Level);

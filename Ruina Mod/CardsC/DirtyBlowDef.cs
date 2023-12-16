@@ -119,8 +119,12 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(DirtyBlowDef))]
-    public sealed class DirtyBlow : Card
+    public sealed class DirtyBlow : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Blunt; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.AttackAction(selector.SelectedEnemy);

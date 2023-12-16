@@ -33,16 +33,19 @@ SkitterAway:
     Description : |-
         Gain {Value1} |Graze|.
         Deal {Damage} damage.
+        |Blunt|
 DirtyBlow:
     Name: 'Dirty Blow'
     Description : |-
         Deal {Damage} damage.
         If the attack dealt damage, apply {Value1} |Bleed|.
+        |Blunt|
 GutHarvesting:
     Name : 'Gut-harvesting'
     Description : |-
         Deal {Damage} damage {Value1} times.
         For each hit that dealt damage, apply {Value2} |Bleed|.
+        |Slash|
 SnakesPrey:
     Name : "Snake's Prey"
     Description : 'Whenever {PlayerName} applies |Bleed|, apply {Value1} additional |Bleed|.'
@@ -51,6 +54,7 @@ FlamingBat:
     Description : |-
         Deal {Damage} damage.
         Apply {Value1} |Burn|.
+        |Blunt|
 SetFire:
     Name : 'Set Fire'
     Description : |-
@@ -62,3 +66,6 @@ ViolentFlame:
 SharpenedBlade:
     Name : 'Sharpened Blade'
     Description : "{PlayerName}'s |Slash| attacks deal {Value1} more damage."
+DarkCloud:
+    Name : 'Dark Cloud'
+    Description : "{PlayerName}'s |Slash| attacks apply {Value1} |Bleed| for each hit that deals damage."

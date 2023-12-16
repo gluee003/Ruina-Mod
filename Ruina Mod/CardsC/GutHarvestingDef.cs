@@ -117,8 +117,12 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(GutHarvestingDef))]
-    public sealed class GutHarvesting : Card
+    public sealed class GutHarvesting : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Slash; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             for (int i = base.Value1; i > 0; i--)

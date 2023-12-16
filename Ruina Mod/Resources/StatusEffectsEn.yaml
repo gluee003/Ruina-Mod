@@ -18,3 +18,7 @@ SlashPowerUpStatus:
     Name : "Slash Power-Up"
     Description : "{OwnerName}'s |Slash| attacks do {Level} more damage."
     Brief : "{OwnerName}'s |Slash| attacks do more damage."
+SlashBleedStatus:
+    Name : "Bleeding Slash"
+    Description : "{OwnerName}'s |Slash| attacks apply {Level} |Bleed| for each hit that deals damage."
+    Brief : "{OwnerName}'s |Slash| attacks apply |Bleed| for each hit that deals damage."
