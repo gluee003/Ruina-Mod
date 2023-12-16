@@ -113,7 +113,10 @@ namespace Ruina_Mod.CardsBasic
     [EntityLogic(typeof(FocusedStrikesDef))]
     public sealed class FocusedStrikes : RuinaCard
     {
-        public AttackType attackType = AttackType.Slash;
+        public override AttackType attackType 
+        {
+            get { return AttackType.Slash; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             base.CardGuns = new Guns(new string[]

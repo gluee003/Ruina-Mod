@@ -75,34 +75,21 @@ namespace Ruina_Mod.Status
     [EntityLogic(typeof(SlashPowerUpEffect))]
     public sealed class SlashPowerUpStatus : StatusEffect
     {
-        bool isSlash = false;
         protected override void OnAdded(Unit unit)
         {
-            base.HandleOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsing, new GameEventHandler<CardUsingEventArgs>(this.OnCardUsing));
             base.HandleOwnerEvent<DamageDealingEventArgs>(base.Battle.Player.DamageDealing, new GameEventHandler<DamageDealingEventArgs>(this.OnPlayerDamageDealing), GameEventPriority.ConfigDefault);
-            base.HandleOwnerEvent<CardUsingEventArgs>(base.Battle.CardUsed, new GameEventHandler<CardUsingEventArgs>(this.OnCardUsed));
-        }
-        private void OnCardUsing(CardUsingEventArgs args)
-        {
-            if (args.Card is RuinaCard card && base.Owner.IsInTurn && args.Card.CardType == CardType.Attack)
-            {
-                if (card.attackType == AttackType.Slash)
-                {
-                    isSlash = true;
-                }
-            }
         }
         private void OnPlayerDamageDealing(DamageDealingEventArgs args)
         {
-            if (isSlash)
+            if (args.ActionSource is RuinaCard card && Owner.IsInTurn && card.CardType == CardType.Attack)
             {
-                args.DamageInfo = args.DamageInfo.IncreaseBy(base.Level);
-                args.AddModifier(this);
+                Debug.Log($"{card} {card.attackType}");
+                if (card.attackType == AttackType.Slash)
+                {
+                    args.DamageInfo = args.DamageInfo.IncreaseBy(base.Level);
+                    args.AddModifier(this);
+                }
             }
-        }
-        private void OnCardUsed(CardUsingEventArgs args) 
-        {
-            isSlash = false;
         }
     }
 }

@@ -111,8 +111,12 @@ namespace Ruina_Mod.CardsBasic
     }
 
     [EntityLogic(typeof(PoundDef))]
-    public sealed class Pound : Card
+    public sealed class Pound : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Blunt; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             string text2;

@@ -7,10 +7,11 @@ namespace Ruina_Mod
     {
         public enum AttackType
         {
+            None,
             Slash,
             Pierce,
             Blunt
         }
-        public AttackType attackType;
+        public virtual AttackType attackType{ get; }
     }
 }

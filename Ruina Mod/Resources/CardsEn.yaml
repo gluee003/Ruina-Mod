@@ -6,7 +6,9 @@ LightDefense:
     Description : 'Gain {Block} |Block|.'
 Pound:
     Name : 'Pound'
-    Description : 'Deal {Damage} damage.'
+    Description : |-
+        Deal {Damage} damage.
+        |Blunt|
 Evade:
     Name : 'Evade'
     Description : 'Gain {Block} |Block|.'
@@ -15,10 +17,12 @@ ChargeAndCover:
     Description : |-
         Deal {Damage} damage.
         Gain {Block} |Block|.
+        |Pierce|
     UpgradedDescription : |-
         Deal {Damage} damage.
         Gain {Block} |Block|.
         Apply {Value1} |Weak|.
+        |Pierce|
 FocusedStrikes:
     Name: 'Focused Strikes'
     Description : |-

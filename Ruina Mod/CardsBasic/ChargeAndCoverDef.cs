@@ -112,8 +112,12 @@ namespace Ruina_Mod.CardsBasic
     }
 
     [EntityLogic(typeof(ChargeAndCoverDef))]
-    public sealed class ChargeAndCover : Card
+    public sealed class ChargeAndCover : RuinaCard
     {
+        public override AttackType attackType
+        {
+            get { return AttackType.Pierce; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             string text2;

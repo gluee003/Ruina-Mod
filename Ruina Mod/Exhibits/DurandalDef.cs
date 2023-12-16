@@ -98,14 +98,14 @@ namespace Ruina_Mod.Exhibits
             if (base.Owner.IsInTurn)
             {
                 base.Counter = (base.Counter + 1) % (base.Value1 + 1);
-                if (base.Counter == 2)
+                if (base.Counter == 2 && !Battle.BattleShouldEnd)
                 // gain Firepower and Spirit after playing 2 cards
                 {
                     base.NotifyActivating();
                     yield return new ApplyStatusEffectAction<Firepower>(base.Owner, new int?(base.Value2), null, null, null, 0f, true);
                     yield return new ApplyStatusEffectAction<Spirit>(base.Owner, new int?(base.Value2), null, null, null, 0f, true);
                 }
-                if (base.Counter == 0)
+                if (base.Counter == 0 && !Battle.BattleShouldEnd)
                 // remove Firepower and Spirit gained after playing 3rd card
                 {
                     base.NotifyActivating();
