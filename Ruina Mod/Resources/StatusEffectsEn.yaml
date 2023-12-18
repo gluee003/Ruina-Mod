@@ -22,3 +22,7 @@ SlashBleedStatus:
     Name : "Bleeding Slash"
     Description : "{OwnerName}'s |Slash| attacks apply {Level} |Bleed| for each hit that deals damage."
     Brief : "{OwnerName}'s |Slash| attacks apply |Bleed| for each hit that deals damage."
+ChargeUpStatus:
+    Name : "C-charge Up!"
+    Description : |-
+        At the start of {OwnerName}'s turn, gain {Level} <sprite="ManaSprite" name="C">.

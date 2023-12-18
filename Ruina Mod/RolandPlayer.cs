@@ -38,10 +38,16 @@ namespace Ruina_Mod
             var sprites = new PlayerImages();
 
             var asyncLoading = ResourceLoader.LoadSpriteAsync("Roland.png", directorySource);
+            var loading2 = ResourceLoader.LoadSprite("CardImprint.png", directorySource);
+            var loading3 = ResourceLoader.LoadSprite("Avatar.png", directorySource);
+            var loading4 = ResourceLoader.LoadSprite("CollectionIcon.png", directorySource);
 
             sprites.SetStartPanelStand(asyncLoading);
             sprites.SetWinStand(asyncLoading);
             sprites.SetDeckStand(asyncLoading);
+            sprites.SetCardImprint(() => loading2);
+            sprites.SetInRunAvatarPic(() => loading3);
+            sprites.SetCollectionIcon(() => loading4);
 
             return sprites;
         }
@@ -54,7 +60,7 @@ namespace Ruina_Mod
             Order: 0,
             UnlockLevel: 0,
             ModleName: "",
-            NarrativeColor: "#474747",
+            NarrativeColor: "#CCCCCC",
             IsSelectable: true,
             MaxHp: 80,
             InitialMana: new LBoL.Base.ManaGroup() { Colorless = 4 },

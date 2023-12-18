@@ -69,3 +69,8 @@ SharpenedBlade:
 DarkCloud:
     Name : 'Dark Cloud'
     Description : "{PlayerName}'s |Slash| attacks apply {Value1} |Bleed| for each hit that deals damage."
+ChargeUp:
+    Name : 'C-charge Up!'
+    Description : |-
+        At the start of {PlayerName}'s turn, gain {Value1} <sprite="ManaSprite" name="C">.
+        Gain {Value2} |Weak| and {Value2} |Fragile|.
