@@ -10,3 +10,4 @@ PerceptionMask:
         Adds {BaseMana} to the mana base. Cards unique to |Roland| are added to the card pool.
         At the start of {PlayerName}'s turn, gain {Value1} |Graze|.
         Until after the first attack card is played each turn, attacks inflict life loss equal to their attack damage instead of dealing attack damage.
+    DetailText: "Attacks affected by |Perception-blocking Mask| are not affected by |Paralysed|."

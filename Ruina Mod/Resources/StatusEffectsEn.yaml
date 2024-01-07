@@ -26,3 +26,9 @@ ChargeUpStatus:
     Name : "C-charge Up!"
     Description : |-
         At the start of {OwnerName}'s turn, gain {Level} <sprite="ManaSprite" name="C">.
+    Brief : |-
+        At the Start of {Ownername}'s turn, gain more <sprite="ManaSprite" name="C">.
+ParalysisStatus:
+    Name : "Paralysed"
+    Description : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose a stack of |Paralysed|."
+    Brief : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose a stack of |Paralysed|."

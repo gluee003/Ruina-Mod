@@ -98,8 +98,8 @@ namespace Ruina_Mod.CardsC
               RelativeKeyword: Keyword.None,
               UpgradedRelativeKeyword: Keyword.None,
 
-              RelativeEffects: new List<string>() { "Weak" , "Fragil" },
-              UpgradedRelativeEffects: new List<string>() { "Weak" , "Fragil" },
+              RelativeEffects: new List<string>() { "ParalysisStatus" },
+              UpgradedRelativeEffects: new List<string>() { "ParalysisStatus" },
               RelativeCards: new List<string>() { },
               UpgradedRelativeCards: new List<string>() { },
 
@@ -122,8 +122,7 @@ namespace Ruina_Mod.CardsC
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.BuffAction<ChargeUpStatus>(base.Value1, 0, 0, 0, 0.2f);
-            yield return base.DebuffAction<Weak>(base.Battle.Player, 0, base.Value2, 0, 0, true, 0.2f);
-            yield return base.DebuffAction<Fragil>(base.Battle.Player, 0, base.Value2, 0, 0, true, 0.2f);
+            yield return base.DebuffAction<ParalysisStatus>(base.Battle.Player, base.Value2, 0, 0, 0, false, 0.2f);
         }
     }
 }

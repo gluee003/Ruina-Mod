@@ -73,4 +73,9 @@ ChargeUp:
     Name : 'C-charge Up!'
     Description : |-
         At the start of {PlayerName}'s turn, gain {Value1} <sprite="ManaSprite" name="C">.
-        Gain {Value2} |Weak| and {Value2} |Fragile|.
+        Gain {Value2} |Paralysed|.
+Yolo:
+    Name : 'Y-you Only Live Once!'
+    Description: |-
+        Deal {Damage} damage.
+        Apply {Value1} |Paralysed|.

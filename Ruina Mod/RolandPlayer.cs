@@ -100,7 +100,7 @@ namespace Ruina_Mod
 
         public override ModelOption LoadModelOptions()
         {
-            return new ModelOption(ResourceLoader.LoadSpriteAsync("Roland_Sprite.png", directorySource));
+            return new ModelOption(ResourceLoader.LoadSpriteAsync("Roland_Sprite.png", directorySource, 250));
         }
 
         public override UniTask<Sprite> LoadSpellSprite() => ResourceLoader.LoadSpriteAsync("Roland.png", RolandPlayerDef.dir);
