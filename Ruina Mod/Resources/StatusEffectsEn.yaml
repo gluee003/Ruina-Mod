@@ -30,5 +30,9 @@ ChargeUpStatus:
         At the Start of {Ownername}'s turn, gain more <sprite="ManaSprite" name="C">.
 ParalysisStatus:
     Name : "Paralysed"
-    Description : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose a stack of |Paralysed|."
-    Brief : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose a stack of |Paralysed|."
+    Description : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose 1 |Paralysed|."
+    Brief : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose 1 |Paralysed|."
+ProtectionStatus:
+    Name : "Protected"
+    Description: "Whenever {OwnerName} receives attack damage, reduce it by {Level}. At the start of {OwnerName}'s turn, lose 1 |Protected|."
+    Brief: "Whenever {OwnerName} receives attack damage, reduce it. At the start of {OwnerName}'s turn, lose 1 |Protected|."

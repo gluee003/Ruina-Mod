@@ -79,3 +79,8 @@ Yolo:
     Description: |-
         Deal {Damage} damage.
         Apply {Value1} |Paralysed|.
+Struggle:
+    Name : 'Struggle'
+    Description : |-
+        Gain {Block} |Block| {Value1} times.
+        Gain {Value2} |Protected|.
