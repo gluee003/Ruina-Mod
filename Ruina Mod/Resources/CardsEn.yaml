@@ -84,3 +84,8 @@ Struggle:
     Description : |-
         Gain {Block} |Block| {Value1} times.
         Gain {Value2} |Protected|.
+FourthMF:
+    Name : 'Fourth Match Flame'
+    Description : |-
+        Deal {Damage} damage to each enemy.
+        Apply {Value1} |Burn| to each enemy.

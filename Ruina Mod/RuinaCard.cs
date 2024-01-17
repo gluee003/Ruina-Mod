@@ -13,5 +13,13 @@ namespace Ruina_Mod
             Blunt
         }
         public virtual AttackType attackType{ get; }
+        public enum PageType
+        {
+            None,
+            Melee,
+            Ranged,
+            EGO
+        }
+        public virtual PageType pageType { get; }
     }
 }

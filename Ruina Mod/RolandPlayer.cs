@@ -66,8 +66,8 @@ namespace Ruina_Mod
             InitialMana: new LBoL.Base.ManaGroup() { Colorless = 4 },
             InitialMoney: 10,
             InitialPower: 0,
-            UltimateSkillA: "ReimuUltR",
-            UltimateSkillB: "ReimuUltW",
+            UltimateSkillA: "RolandUlt",
+            UltimateSkillB: "RolandUlt",
             ExhibitA: "Durandal",
             ExhibitB: "PerceptionMask",
             DeckA: new List<string> { "Pound", "Pound", "Evade", "Evade", "LightAttack", "LightAttack", "LightDefense", "LightDefense", "LightDefense", "ChargeAndCover" },
@@ -103,7 +103,7 @@ namespace Ruina_Mod
             return new ModelOption(ResourceLoader.LoadSpriteAsync("Roland_Sprite.png", directorySource, 250));
         }
 
-        public override UniTask<Sprite> LoadSpellSprite() => ResourceLoader.LoadSpriteAsync("Roland.png", RolandPlayerDef.dir);
+        public override UniTask<Sprite> LoadSpellSprite() => ResourceLoader.LoadSpriteAsync("Roland.png", directorySource);
 
         public override UnitModelConfig MakeConfig()
         {

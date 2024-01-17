@@ -330,6 +330,7 @@
       <None Remove="resources\PlayerModelEn.yaml" />
       <None Remove="Resources\PlayerUnitEn.yaml" />
       <None Remove="Resources\StatusEffectsEn.yaml" />
+      <None Remove="resources\UltimateSkillEn.yaml" />
     </ItemGroup>
 
 
