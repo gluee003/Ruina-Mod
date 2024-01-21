@@ -125,6 +125,10 @@ namespace Ruina_Mod.CardsC
         {
             get { return AttackType.Slash; }
         }
+        public override PageRange pageRange
+        {
+            get { return PageRange.Melee; }
+        }
         public override PageType pageType
         {
             get { return PageType.EGO;  }

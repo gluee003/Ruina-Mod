@@ -117,7 +117,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(ViolentFlameDef))]
-    public sealed class ViolentFlame : Card
+    public sealed class ViolentFlame : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

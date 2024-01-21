@@ -112,6 +112,10 @@ namespace Ruina_Mod.CardsBasic
     [EntityLogic(typeof(LightAttackDef))]
     public sealed class LightAttack : RuinaCard
     {
+        public override PageRange pageRange
+        {
+            get { return PageRange.Melee; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             string text2;

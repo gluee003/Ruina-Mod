@@ -15,11 +15,17 @@ namespace Ruina_Mod
         public virtual AttackType attackType{ get; }
         public enum PageType
         {
-            None,
-            Melee,
-            Ranged,
+            Normal,
+            Abnormality,
             EGO
         }
         public virtual PageType pageType { get; }
+        public enum PageRange
+        {
+            None,
+            Melee,
+            Range
+        }
+        public virtual PageRange pageRange { get;  }
     }
 }

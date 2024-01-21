@@ -111,7 +111,7 @@ namespace Ruina_Mod.CardsBasic
     }
 
     [EntityLogic(typeof(LightDefenseDef))]
-    public sealed class LightDefense : Card
+    public sealed class LightDefense : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

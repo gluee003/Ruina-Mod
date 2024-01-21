@@ -123,6 +123,10 @@ namespace Ruina_Mod.CardsC
         {
             get { return AttackType.Slash; }
         }
+        public override PageRange pageRange
+        {
+            get { return PageRange.Melee; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             for (int i = base.Value1; i > 0; i--)

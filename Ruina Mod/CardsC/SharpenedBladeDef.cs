@@ -117,7 +117,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(SharpenedBladeDef))]
-    public sealed class SharpenedBlade : Card
+    public sealed class SharpenedBlade : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

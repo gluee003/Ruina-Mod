@@ -124,6 +124,10 @@ namespace Ruina_Mod.CardsC
         {
             get { return AttackType.Blunt; }
         }
+        public override PageRange pageRange
+        {
+            get { return PageRange.Melee; }
+        }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
             yield return base.AttackAction(selector.SelectedEnemy);

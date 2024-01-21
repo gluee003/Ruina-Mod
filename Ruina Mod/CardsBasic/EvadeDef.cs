@@ -111,7 +111,7 @@ namespace Ruina_Mod.CardsBasic
     }
 
     [EntityLogic(typeof(EvadeDef))]
-    public sealed class Evade : Card
+    public sealed class Evade : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

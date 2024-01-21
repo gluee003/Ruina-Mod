@@ -117,7 +117,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(SnakesPreyDef))]
-    public sealed class SnakesPrey : Card
+    public sealed class SnakesPrey : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

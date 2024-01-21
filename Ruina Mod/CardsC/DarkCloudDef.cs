@@ -117,7 +117,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(DarkCloudDef))]
-    public sealed class DarkCloud : Card
+    public sealed class DarkCloud : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {

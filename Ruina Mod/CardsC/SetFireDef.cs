@@ -118,7 +118,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(SetFireDef))]
-    public sealed class SetFire : Card
+    public sealed class SetFire : RuinaCard
     {
         int Value3 = 2;
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)

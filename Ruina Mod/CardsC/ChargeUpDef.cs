@@ -117,7 +117,7 @@ namespace Ruina_Mod.CardsC
         }
     }
     [EntityLogic(typeof(ChargeUpDef))]
-    public sealed class ChargeUp : Card
+    public sealed class ChargeUp : RuinaCard
     {
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
