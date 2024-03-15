@@ -54,7 +54,7 @@ namespace Ruina_Mod.Exhibits
             var exhibitConfig = new ExhibitConfig(
                 Index: 0,
                 Id: "",
-                Order: 10,
+                Order: 99,
                 IsDebug: false,
                 IsPooled: false,
                 IsSentinel: false,
@@ -90,7 +90,10 @@ namespace Ruina_Mod.Exhibits
         {
             base.ReactBattleEvent<CardUsingEventArgs>(base.Battle.CardUsed, new EventSequencedReactor<CardUsingEventArgs>(this.OnCardUsed));
             base.ReactBattleEvent<UnitEventArgs>(base.Battle.Player.TurnStarted, new EventSequencedReactor<UnitEventArgs>(this.OnPlayerTurnStarted));
-            base.HandleBattleEvent<DamageDealingEventArgs>(base.Owner.DamageDealing, new GameEventHandler<DamageDealingEventArgs>(this.OnDamageDealing));
+            foreach (EnemyUnit enemyUnit in Battle.AllAliveEnemies)
+            {
+                base.HandleBattleEvent<DamageEventArgs>(enemyUnit.DamageReceiving, new GameEventHandler<DamageEventArgs>(this.OnEnemyDamageReceiving));
+            }
         }
 
         protected override void OnLeaveBattle()
@@ -105,11 +108,11 @@ namespace Ruina_Mod.Exhibits
             base.Counter = 0;
             yield break;
         }
-        private void OnDamageDealing(DamageDealingEventArgs args)
+        private void OnEnemyDamageReceiving(DamageEventArgs args)
         {
             if (args.DamageInfo.DamageType == DamageType.Attack && base.Counter == 0)
             {
-                args.DamageInfo = new DamageInfo(args.DamageInfo.Damage, DamageType.HpLose, isGrazed:args.DamageInfo.IsGrazed, isAccuracy:args.DamageInfo.IsAccuracy, dontBreakPerfect:args.DamageInfo.DontBreakPerfect);
+                args.DamageInfo = new DamageInfo(args.DamageInfo.Damage, DamageType.HpLose, isGrazed: args.DamageInfo.IsGrazed, isAccuracy: args.DamageInfo.IsAccuracy, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
                 args.AddModifier(this);
             }
         }
