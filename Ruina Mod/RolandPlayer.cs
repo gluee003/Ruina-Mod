@@ -1,5 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
 using LBoL.ConfigData;
+using LBoL.Core;
+using LBoL.Core.Battle;
+using LBoL.Core.StatusEffects;
 using LBoL.Core.Units;
 using LBoLEntitySideloader;
 using LBoLEntitySideloader.Attributes;
@@ -12,6 +15,15 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using static Ruina_Mod.BepinexPlugin;
+using static UnityEngine.UI.GridLayoutGroup;
+using LBoL.Base;
+using LBoL.Core.Battle.BattleActions;
+using LBoL.Core.Cards;
+using LBoL.Base.Extensions;
+using System.Linq;
+using static Ruina_Mod.RuinaCard;
+using LBoL.EntityLib.StatusEffects.Basic;
+using Ruina_Mod.Status;
 
 namespace Ruina_Mod
 {
@@ -79,8 +91,30 @@ namespace Ruina_Mod
         }
 
         [EntityLogic(typeof(RolandPlayerDef))]
-        public sealed class Roland : PlayerUnit 
-        { 
+        public sealed class Roland : PlayerUnit
+        {
+            private StatusEffect _counterHead = null;
+            public StatusEffect CounterHead
+            {
+                get => _counterHead;
+                set => _counterHead = value;
+            }
+            protected override void OnEnterBattle(BattleController battle)
+            {
+                base.HandleBattleEvent<DamageEventArgs>(battle.Player.DamageReceived, new GameEventHandler<DamageEventArgs>(this.OnDamageReceived));
+            }
+            private void OnDamageReceived(DamageEventArgs args)
+            {
+                List<StatusEffect> status_effects = new List<StatusEffect>();
+                foreach (StatusEffect statusEffect in base.Battle.Player.StatusEffects.Where((effect) => effect is CounterAttackStatus))
+                {
+                    status_effects.Add(statusEffect);
+                }
+                if (status_effects.Count > 0)
+                {
+                    CounterHead = status_effects[0];
+                }
+            }
         }
     }
 

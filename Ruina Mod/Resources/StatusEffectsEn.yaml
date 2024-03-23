@@ -34,5 +34,24 @@ ParalysisStatus:
     Brief : "When {OwnerName} attacks or defends, deal {Value} less damage, gain {Value} less |Block| or |Shield|, or gain {Value2} less |Graze|, then lose 1 |Paralysed|."
 ProtectionStatus:
     Name : "Protected"
-    Description: "Whenever {OwnerName} receives attack damage, reduce it by {Level}. At the start of {OwnerName}'s turn, lose 1 |Protected|."
-    Brief: "Whenever {OwnerName} receives attack damage, reduce it. At the start of {OwnerName}'s turn, lose 1 |Protected|."
+    Description : "Whenever {OwnerName} receives attack damage, reduce it by {Level}. At the start of {OwnerName}'s turn, lose 1 |Protected|."
+    Brief : "Whenever {OwnerName} receives attack damage, reduce it. At the start of {OwnerName}'s turn, lose 1 |Protected|."
+CounterAttackStatus:
+    Name : "Counter - Attack"
+    Description : |- 
+        Whenever {OwnerName} receives attack damage, if the level({Level}) of this status effect instance is greater than the damage received, prevent that instance of damage, then deal {Level} damage to the enemy that attacked {OwnerName}.
+        If the level of this status effect instance is equal to the damage received, prevent that instance of damage, deal {Level} damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
+        If the level of this status effect instance is less than the damage received, this status effect instance is removed.
+        
+        Only one status effect instance will activate at any given time, and they will activate in the order in which they are added.
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+        At the start of {OwnerName}'s turn, this status effect is lost.
+
+    Brief : |- 
+        Whenever {OwnerName} receives attack damage, if the level of this status effect instance is greater than the damage received, prevent that instance of damage, then deal damage to the enemy that attacked {OwnerName}.
+        If the level of this status effect instance is equal to the damage received, prevent that instance of damage, deal damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
+        If the level of this status effect instance is less than the damage received, this status effect instance is removed.
+        
+        Only one status effect instance will activate at any given time, and they will activate in the order in which they are added.
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+        At the start of {OwnerName}'s turn, this status effect is lost.
