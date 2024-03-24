@@ -93,28 +93,6 @@ namespace Ruina_Mod
         [EntityLogic(typeof(RolandPlayerDef))]
         public sealed class Roland : PlayerUnit
         {
-            private StatusEffect _counterHead = null;
-            public StatusEffect CounterHead
-            {
-                get => _counterHead;
-                set => _counterHead = value;
-            }
-            protected override void OnEnterBattle(BattleController battle)
-            {
-                base.HandleBattleEvent<DamageEventArgs>(battle.Player.DamageReceived, new GameEventHandler<DamageEventArgs>(this.OnDamageReceived));
-            }
-            private void OnDamageReceived(DamageEventArgs args)
-            {
-                List<StatusEffect> status_effects = new List<StatusEffect>();
-                foreach (StatusEffect statusEffect in base.Battle.Player.StatusEffects.Where((effect) => effect is CounterAttackStatus))
-                {
-                    status_effects.Add(statusEffect);
-                }
-                if (status_effects.Count > 0)
-                {
-                    CounterHead = status_effects[0];
-                }
-            }
         }
     }
 

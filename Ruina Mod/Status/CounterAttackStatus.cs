@@ -76,14 +76,14 @@ namespace Ruina_Mod.Status
     [EntityLogic(typeof(CounterAttackEffect))]
     public sealed class CounterAttackStatus : StatusEffect
     {
-        bool activated;
+        bool activated = false;
         float unmodified_dmg;
         protected override void OnAdded(Unit unit)
         {
             base.HandleOwnerEvent<DamageEventArgs>(unit.DamageTaking, new GameEventHandler<DamageEventArgs>(this.OnDamageTaking));
             base.ReactOwnerEvent<DamageEventArgs>(unit.DamageReceived, new EventSequencedReactor<DamageEventArgs>(this.OnDamageReceived));
             base.ReactOwnerEvent<StatisticalDamageEventArgs>(unit.StatisticalTotalDamageReceived, new EventSequencedReactor<StatisticalDamageEventArgs>(this.OnStatisticalDamageReceived));
-            base.ReactOwnerEvent<UnitEventArgs>(base.Owner.TurnStarting, new EventSequencedReactor<UnitEventArgs>(this.OnTurnStarting));
+            base.ReactOwnerEvent<UnitEventArgs>(unit.TurnStarting, new EventSequencedReactor<UnitEventArgs>(this.OnTurnStarting));
         }
         private void OnDamageTaking(DamageEventArgs args)
         {
@@ -92,40 +92,53 @@ namespace Ruina_Mod.Status
             {
                 status_effects.Add(statusEffect);
             }
-            if (System.Object.ReferenceEquals(this, status_effects[0]) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack)
+            unmodified_dmg = args.DamageInfo.Amount;
+            if (System.Object.ReferenceEquals(this, status_effects[^1]) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack)
             {
-                unmodified_dmg = args.DamageInfo.Amount;
-                if (base.Level >= args.DamageInfo.Amount)
+                StatusEffect activating_status = status_effects[0];
+                if (activating_status.Level >= args.DamageInfo.Amount)
                 {
-                    base.NotifyActivating();
+                    activating_status.NotifyActivating();
                     args.DamageInfo = new DamageInfo(0f, args.DamageInfo.DamageType, isGrazed: args.DamageInfo.IsGrazed, isAccuracy: args.DamageInfo.IsAccuracy, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
                     args.AddModifier(this);
                 }
             }
         }
+        public IEnumerable<BattleAction> TakeEffect(DamageEventArgs args)
+        {
+            activated = true;
+            if (base.Level > unmodified_dmg)
+            {
+                yield return new DamageAction(base.Owner, args.Source, DamageInfo.Reaction((float)base.Level, false), "YoumuKan");
+            }
+            else if (base.Level == unmodified_dmg)
+            {
+                yield return new DamageAction(base.Owner, args.Source, DamageInfo.Reaction((float)base.Level, false), "YoumuKan");
+                yield return new RemoveStatusEffectAction(this, true, 0.1f);
+            }
+            else if (base.Level < unmodified_dmg)
+            {
+                yield return new RemoveStatusEffectAction(this, true, 0.1f);
+            }
+            yield break;
+        }
         private IEnumerable<BattleAction> OnDamageReceived(DamageEventArgs args)
         {
-            activated = false;
-            StatusEffect counter_head = null;
-            if (base.Owner is Roland player)
+            List<StatusEffect> status_effects = new List<StatusEffect>();
+            foreach (StatusEffect statusEffect in Owner.StatusEffects.Where((effect) => effect is CounterAttackStatus))
             {
-                counter_head = player.CounterHead;
+                status_effects.Add(statusEffect);
             }
-            if (System.Object.ReferenceEquals(this, counter_head) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack && unmodified_dmg > 0)
+            if (System.Object.ReferenceEquals(this, status_effects[^1]) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack && unmodified_dmg > 0)
             {
-                activated = true;
-                if (base.Level > unmodified_dmg)
+                StatusEffect activating_status = base.Owner.GetStatusEffect<CounterAttackStatus>();
+                if (activating_status is CounterAttackStatus status)
                 {
-                    yield return new DamageAction(base.Owner, args.Source, DamageInfo.Reaction((float)base.Level, false), "YoumuKan");
-                }
-                else if (base.Level == unmodified_dmg)
-                {
-                    yield return new DamageAction(base.Owner, args.Source, DamageInfo.Reaction((float)base.Level, false), "YoumuKan");
-                    yield return new RemoveStatusEffectAction(this, true, 0.1f);
-                }
-                else if (base.Level < unmodified_dmg)
-                {
-                    yield return new RemoveStatusEffectAction(this, true, 0.1f);
+                    IEnumerable<BattleAction> actions = status.TakeEffect(args);
+                    foreach (BattleAction action in actions)
+                    {
+                        yield return action;
+                    }
                 }
             }
             yield break;
@@ -134,11 +147,12 @@ namespace Ruina_Mod.Status
         {
             if (activated)
             {
-                yield return new RemoveStatusEffectAction(this, true, 0.1f);
+                StatusEffect activating_status = base.Owner.GetStatusEffect<CounterAttackStatus>();
+                yield return new RemoveStatusEffectAction(activating_status, true, 0.1f);
             }
             yield break;
         }
-            private IEnumerable<BattleAction> OnTurnStarting(UnitEventArgs args)
+        private IEnumerable<BattleAction> OnTurnStarting(UnitEventArgs args)
         {
             base.NotifyActivating();
             yield return new RemoveStatusEffectAction(this, true, 0.1f);
