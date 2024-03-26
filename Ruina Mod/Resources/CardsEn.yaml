@@ -1,60 +1,56 @@
 LightAttack:
     Name : 'Light Attack'
-    Description : 'Deal {Damage} damage.'
+    Description : |-
+        Deal {Damage} damage.
 LightDefense:
     Name : 'Light Defense'
-    Description : 'Gain {Block} |Block|.'
+    Description : |-
+        Gain {Block} |Block|.
 Pound:
     Name : 'Pound'
     Description : |-
         Deal {Damage} damage.
-        |Blunt|
 Evade:
     Name : 'Evade'
-    Description : 'Gain {Block} |Block|.'
+    Description : |-
+        Gain {Block} |Block|.
 ChargeAndCover:
     Name : 'Charge and Cover'
     Description : |-
         Deal {Damage} damage.
         Gain {Block} |Block|.
-        |Pierce|
     UpgradedDescription : |-
         Deal {Damage} damage.
         Gain {Block} |Block|.
         Apply {Value1} |Weak|.
-        |Pierce|
 FocusedStrikes:
     Name: 'Focused Strikes'
     Description : |-
         Deal {Damage} damage {Value1} times.
-        |Slash|
 SkitterAway:
     Name: 'Skitter Away'
     Description : |-
         Gain {Value1} |Graze|.
         Deal {Damage} damage.
-        |Blunt|
 DirtyBlow:
     Name: 'Dirty Blow'
     Description : |-
         Deal {Damage} damage.
         If the attack dealt damage, apply {Value1} |Bleed|.
-        |Blunt|
 GutHarvesting:
     Name : 'Gut-harvesting'
     Description : |-
         Deal {Damage} damage {Value1} times.
         For each hit that dealt damage, apply {Value2} |Bleed|.
-        |Slash|
 SnakesPrey:
     Name : "Snake's Prey"
-    Description : 'Whenever {PlayerName} applies |Bleed|, apply {Value1} additional |Bleed|.'
+    Description : |-
+        Whenever {PlayerName} applies |Bleed|, apply {Value1} additional |Bleed|.
 FlamingBat:
     Name : 'Taste My Flaming Bat!'
     Description : |-
         Deal {Damage} damage.
         Apply {Value1} |Burn|.
-        |Blunt|
 SetFire:
     Name : 'Set Fire'
     Description : |-
@@ -62,13 +58,16 @@ SetFire:
         Take {Value2} damage.
 ViolentFlame:
     Name : 'Violent Flame'
-    Description : 'Whenever {PlayerName} applies |Burn|, apply {Value1} additional |Burn|.'
+    Description : |-
+        Whenever {PlayerName} applies |Burn|, apply {Value1} additional |Burn|.
 SharpenedBlade:
     Name : 'Sharpened Blade'
-    Description : "{PlayerName}'s |Slash| attacks deal {Value1} more damage."
+    Description : |-
+        {PlayerName}'s |Slash| attacks deal {Value1} more damage.
 DarkCloud:
     Name : 'Dark Cloud'
-    Description : "{PlayerName}'s |Slash| attacks apply {Value1} |Bleed| for each hit that deals damage."
+    Description : |-
+        {PlayerName}'s |Slash| attacks apply {Value1} |Bleed| for each hit that deals damage.
 ChargeUp:
     Name : 'C-charge Up!'
     Description : |-
