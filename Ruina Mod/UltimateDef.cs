@@ -72,7 +72,7 @@ namespace Ruina_Mod
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector)
         {
             yield return PerformAction.Spell(Battle.Player, "RolandUlt");
-            Card[] array = Tools.RollCardsAnyFilter(GameRun.BattleCardRng, new CardWeightTable(RarityWeightTable.BattleCard, OwnerWeightTable.AllOnes, CardTypeWeightTable.CanBeLoot), base.Value1, null, false, false, false, 
+            Card[] array = Tools.RollCardsAnyFilter(GameRun.BattleCardRng, new CardWeightTable(RarityWeightTable.BattleCard, OwnerWeightTable.AllOnes, CardTypeWeightTable.CanBeLoot), base.Value1, null, false, false, false, false, 
                            (Card card) => card is RuinaCard ruinacard && ruinacard.pageType == RuinaCard.PageType.EGO);
 
             MiniSelectCardInteraction interaction = new MiniSelectCardInteraction(array, false, false, false);

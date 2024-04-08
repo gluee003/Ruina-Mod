@@ -40,18 +40,87 @@ CounterAttackStatus:
     Name : "Counter - Attack"
     Description : |- 
         Whenever {OwnerName} receives attack damage, if the level({Level}) of this status effect instance is greater than the damage received, prevent that instance of damage, then deal {Level} damage to the enemy that attacked {OwnerName}.
-        If the level of this status effect instance is equal to the damage received, prevent that instance of damage, deal {Level} damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
-        If the level of this status effect instance is less than the damage received, this status effect instance is removed.
-        
-        Only one status effect instance will activate at any given time, and they will activate in the order in which they are added.
-        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
-        At the start of {OwnerName}'s turn, this status effect is lost.
 
+        If this status effect instance's level is equal to the damage received, prevent that instance of damage, deal {Level} damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
+
+        If this status effect instance's level is less than the damage received, this status effect instance is removed.
+        
+
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
+        At the start of {OwnerName}'s turn, this status effect is lost.
     Brief : |- 
         Whenever {OwnerName} receives attack damage, if the level of this status effect instance is greater than the damage received, prevent that instance of damage, then deal damage to the enemy that attacked {OwnerName}.
-        If the level of this status effect instance is equal to the damage received, prevent that instance of damage, deal damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
-        If the level of this status effect instance is less than the damage received, this status effect instance is removed.
+
+        If this status effect instance's level is equal to the damage received, prevent that instance of damage, deal damage to the enemy that attacked {OwnerName}, then this status effect instance is removed.
+
+        If this status effect instance's level is less than the damage received, this status effect instance is removed.
+
         
-        Only one status effect instance will activate at any given time, and they will activate in the order in which they are added.
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
         If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
+        At the start of {OwnerName}'s turn, this status effect is lost.
+CounterBlockStatus:
+    Name : "Counter - Block"
+    Description : |-
+        Whenever {OwnerName} receives attack damage, reduce that instance of damage by {Level}.
+
+        If this status effect instance's level is greater than the damage received, gain |Barrier| and deal damage to the enemy that attacked {OwnerName}.
+        The |Barrier| gained and damage dealt is equal to the difference between the level and the damage received.
+
+        If this status effect instance's level is less than or equal to the damage received, this status effect instance is removed.
+
+
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
+        At the start of {OwnerName}'s turn, this status effect is lost.
+    Brief : |-
+        Whenever {OwnerName} receives attack damage, reduce that instance of damage.
+
+        If this status effect instance's level is greater than the damage received, gain |Barrier| and deal damage to the enemy that attacked {OwnerName}.
+        The |Barrier| gained and damage dealt is equal to the difference between the level and the damage received.
+
+        If this status effect instance's level is less than or equal to the damage received, this status effect instance is removed.
+
+
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
+        At the start of {OwnerName}'s turn, this status effect is lost.
+CounterEvadeStatus:
+    Name : "Counter - Evade"
+    Description : |-
+        Whenever {OwnerName} receives attack damage, if the level({Level}) of this status effect instance is greater than the damage received, prevent that instance of damage, then gain {Value1} |Graze|.
+        Up to {Value2} |Graze| may be gained this way per status effect instance.
+
+        If this status effect instance's level is equal to the damage received, prevent that instance of damage, then this status effect instance is removed.
+
+        If this status effect instance's level is less than the damage received, this status effect instance is removed.
+
+        
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
+        At the start of {OwnerName}'s turn, this status effect is lost.
+    Brief : |-
+        Whenever {OwnerName} receives attack damage, if the level of this status effect instance is greater than the damage received, prevent that instance of damage, then gain {Value1} |Graze|.
+        Up to {Value2} |Graze| may be gained this way per status effect instance.
+
+        If this status effect instance's level is equal to the damage received, prevent that instance of damage, then this status effect instance is removed.
+
+        If this status effect instance's level is less than the damage received, this status effect instance is removed.
+
+        
+        Only one |Counter| status effect instance will activate at any given time, and they will activate in the order in which they are added.
+
+        If a status effect instance was activated by an enemy's attack, that status effect instance will be removed after the enemy's attack action is completed.
+
         At the start of {OwnerName}'s turn, this status effect is lost.

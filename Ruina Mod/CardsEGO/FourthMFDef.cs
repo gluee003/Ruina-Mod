@@ -58,6 +58,7 @@ namespace Ruina_Mod.CardsC
               DebugLevel: 0,
               Revealable: false,
               IsPooled: true,
+              FindInBattle: true,
               HideMesuem: false,
               IsUpgradable: true,
               Rarity: Rarity.Rare,

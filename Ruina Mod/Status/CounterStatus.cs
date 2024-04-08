@@ -78,6 +78,7 @@ namespace Ruina_Mod.Status
     {
         public bool activated = false;
         public float unmodified_dmg;
+        public int num_evaded = 0;
         protected override void OnAdded(Unit unit)
         {
             base.HandleOwnerEvent<DamageEventArgs>(unit.DamageTaking, new GameEventHandler<DamageEventArgs>(this.OnDamageTaking));
@@ -93,14 +94,42 @@ namespace Ruina_Mod.Status
                 status_effects.Add(statusEffect);
             }
             unmodified_dmg = args.DamageInfo.Amount;
-            if (System.Object.ReferenceEquals(this, status_effects[^1]) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack)
+            if (System.Object.ReferenceEquals(this, status_effects[^1]) && args.Source != base.Owner && args.Source.IsAlive && args.DamageInfo.DamageType == DamageType.Attack && unmodified_dmg > 0)
             {
                 CounterStatus activating_status = Owner.GetStatusEffectExtend<CounterStatus>();
-                if (activating_status.Level >= args.DamageInfo.Amount)
+                if (activating_status is CounterBlockStatus)
+                // if activating status is block, reduce damage taken by level 
                 {
-                    activating_status.NotifyActivating();
-                    args.DamageInfo = new DamageInfo(0f, args.DamageInfo.DamageType, isGrazed: args.DamageInfo.IsGrazed, isAccuracy: args.DamageInfo.IsAccuracy, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
+                    float dmg = Math.Max(0f, unmodified_dmg - activating_status.Level);
+                    if (dmg == 0f)
+                    {
+                        args.DamageInfo = new DamageInfo(dmg, args.DamageInfo.DamageType, isGrazed: false, isAccuracy: false, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
+                    }
+                    else
+                    {
+                        args.DamageInfo = new DamageInfo(dmg, args.DamageInfo.DamageType, isGrazed: args.DamageInfo.IsGrazed, isAccuracy: args.DamageInfo.IsAccuracy, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
+                    }
+                    args.DamageInfo = args.DamageInfo.BlockBy(args.Target.Block);
+                    args.DamageInfo = args.DamageInfo.ShieldBy(args.Target.Shield);
                     args.AddModifier(this);
+                    activating_status.NotifyActivating();
+                }
+                else
+                // else if activating status is attack/evade, nullify damage only if level >= damage
+                {
+                    if (activating_status.Level >= unmodified_dmg)
+                    {
+                        args.DamageInfo = new DamageInfo(0f, args.DamageInfo.DamageType, isGrazed: false, isAccuracy: false, dontBreakPerfect: args.DamageInfo.DontBreakPerfect);
+                        args.AddModifier(this);
+                        activating_status.NotifyActivating();
+                        if (activating_status is CounterEvadeStatus && activating_status.Level > unmodified_dmg)
+                        {
+                            if (activating_status.num_evaded < 4)
+                            {
+                                activating_status.num_evaded++;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -129,6 +158,10 @@ namespace Ruina_Mod.Status
             if (activated)
             {
                 CounterStatus activating_status = Owner.GetStatusEffectExtend<CounterStatus>();
+                if (activating_status is CounterEvadeStatus activating_evade_status && activating_evade_status.num_evaded > 0)
+                {
+                    yield return new ApplyStatusEffectAction<Graze>(base.Owner, activating_evade_status.num_evaded, null, null, null, 0.1f);
+                }
                 yield return new RemoveStatusEffectAction(activating_status, true, 0.1f);
             }
             yield break;
