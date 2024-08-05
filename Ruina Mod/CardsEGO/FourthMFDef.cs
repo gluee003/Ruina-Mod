@@ -95,8 +95,8 @@ namespace Ruina_Mod.CardsC
               UltimateCost: null,
               UpgradedUltimateCost: null,
 
-              Keywords: Keyword.Accuracy,
-              UpgradedKeywords: Keyword.Accuracy,
+              Keywords: Keyword.Accuracy | Keyword.Retain | Keyword.Exile,
+              UpgradedKeywords: Keyword.Accuracy | Keyword.Retain | Keyword.Exile,
               EmptyDescription: false,
               RelativeKeyword: Keyword.None,
               UpgradedRelativeKeyword: Keyword.None,

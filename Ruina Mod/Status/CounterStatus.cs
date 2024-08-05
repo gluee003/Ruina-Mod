@@ -172,5 +172,19 @@ namespace Ruina_Mod.Status
             yield return new RemoveStatusEffectAction(this, true, 0.1f);
             yield break;
         }
+        public string Active
+        {
+            get
+            {
+                if (System.Object.ReferenceEquals(this, Owner.GetStatusEffectExtend<CounterStatus>()))
+                {
+                    return "Active";
+                }
+                else
+                {
+                    return "Inactive";
+                }
+            }
+        }
     }
 }

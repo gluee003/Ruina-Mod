@@ -79,8 +79,6 @@ namespace Ruina_Mod
             yield return new InteractionAction(interaction, false);
 
             Card selectedCard = interaction.SelectedCard;
-            selectedCard.IsRetain = true;
-            selectedCard.IsExile = true;
             yield return new AddCardsToHandAction(new Card[] { selectedCard });
             yield break;
         }
