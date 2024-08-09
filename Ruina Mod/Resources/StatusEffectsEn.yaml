@@ -1,7 +1,11 @@
 BleedStatus:
     Name : Bleed
-    Description : "Whenever {OwnerName} attacks, they lose {Level} life, then lose 1/3 of |Bleed| stacks (rounded up)."
-    Brief : "Whenever {OwnerName} attacks, they lose life, then lose 1/3 of |Bleed| stacks (rounded up)."
+    Description : |-
+        Whenever {OwnerName} attacks, they lose {Level} life, then lose 1/3 of |Bleed| stacks (rounded up).
+        At the end of {OwnerName}'s turn, if they have less than {Threshold} stacks of |Bleed|, lose |Bleed|.
+    Brief : |-
+        Whenever {OwnerName} attacks, they lose life, then lose 1/3 of |Bleed| stacks (rounded up).
+        At the end of {OwnerName}'s turn, if they have less than {Threshold} stacks of |Bleed|, lose |Bleed|.
 BleedMoreStatus:
     Name : "Bleed Power-Up"
     Description : "Whenever {OwnerName} applies |Bleed|, apply {Level} additional |Bleed|."

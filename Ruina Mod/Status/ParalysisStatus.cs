@@ -202,5 +202,12 @@ namespace Ruina_Mod.Status
             }
             yield break;
         }
+        public override string UnitEffectName
+        {
+            get
+            {
+                return "ElectricLoop";
+            }
+        }
     }
 }

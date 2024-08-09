@@ -124,15 +124,9 @@ namespace Ruina_Mod.CardsBasic
         }
         protected override IEnumerable<BattleAction> Actions(UnitSelector selector, ManaGroup consumingMana, Interaction precondition)
         {
-            base.CardGuns = new Guns(new string[]
-                {
-                    base.Config.GunNameBurst,
-                    base.Config.GunNameBurst,
-                    base.Config.GunNameBurst
-                });
-            foreach (GunPair gunPair in base.CardGuns.GunPairs)
+            for (int i = base.Value1; i > 0; i--)
             {
-                yield return base.AttackAction(selector, gunPair);
+                yield return base.AttackAction(selector.SelectedEnemy);
             }
             yield break;
         }
