@@ -88,3 +88,26 @@ FourthMF:
     Description : |-
         Deal {Damage} damage to each enemy.
         Apply {Value1} |Burn| to each enemy.
+BoundaryOfDeath:
+    Name : 'Boundary of Death'
+    Description : |-
+        Deal {CalculateDamage} damage.
+        For each additional condition fulfilled, deal {Value2} times more damage.
+        This damage is capped at {dmgCap}.
+        If the damage dealt is greater than the targeted enemy's outgoing damage (|e:{EnemyDamageStr}|) per hit, apply |Disarm|.
+        |Condition 1:| |e:{HpCondition}| |Condition 2:| |e:{CardPlayCondition}| ({CardPlayCount}/|e:4|)
+        |Condition 3:| |e:{HandPositionCondition}| |Condition 4:| |e:{DrawDiscardPileCondition}|
+    NonbattleDescription : |-
+        Deal {Value1} damage.
+        For each additional condition fulfilled, deal {Value2} times more damage.
+        This damage is capped at {dmgCap}.
+        If the damage dealt is greater than the targeted enemy's outgoing damage per hit, apply |Disarm|.
+
+    DetailText : |-
+        |Condition 1:| {PlayerName}'s life is less than or equal to |e:25%| or divisible by |e:{Value2}|.
+
+        |Condition 2:| {SelfName} is the |e:{Value2}th| card played this turn.
+
+        |Condition 3:| {SelfName} is the |e:{Value2}th| card in the hand from the left or from the right.
+
+        |Condition 4:| The number of cards in the draw pile or discard pile is divisible by |e:{Value2}|.

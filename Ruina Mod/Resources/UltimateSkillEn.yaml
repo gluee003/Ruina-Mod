@@ -1,4 +1,4 @@
 RolandUlt:
     Title : 'The Library'
     Content: 'Draw E.G.O. Page'
-    Description : 'Choose 1 of {Value1} random E.G.O. cards to add to the hand. It has |Retain| and |Exile|.'
+    Description : 'Choose 1 of {Value1} random E.G.O. cards to add to the hand.'

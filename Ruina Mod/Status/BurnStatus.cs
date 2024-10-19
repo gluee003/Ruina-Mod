@@ -60,9 +60,9 @@ namespace Ruina_Mod.Status
                                 ShowPlusByLimit: false,
                                 Keywords: Keyword.None,
                                 RelativeEffects: new List<string>() { },
-                                VFX: "Default",
+                                VFX: "BuffFirepower",
                                 VFXloop: "Default",
-                                SFX: "Default"
+                                SFX: "Firepower"
                     );
                 return statusEffectConfig;
             }

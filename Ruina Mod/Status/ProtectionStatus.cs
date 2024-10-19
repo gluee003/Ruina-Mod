@@ -48,7 +48,7 @@ namespace Ruina_Mod.Status
                 var statusEffectConfig = new StatusEffectConfig(
                                 Id: "",
                                 Index: 0,
-                                Order: 10,
+                                Order: 7,
                                 Type: StatusEffectType.Positive,
                                 IsVerbose: false,
                                 IsStackable: true,
@@ -66,7 +66,7 @@ namespace Ruina_Mod.Status
                                 RelativeEffects: new List<string>() { },
                                 VFX: "Default",
                                 VFXloop: "Default",
-                                SFX: "Default"
+                                SFX: "RockHard"
                     );
                 return statusEffectConfig;
             }

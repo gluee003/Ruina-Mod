@@ -108,3 +108,17 @@ CounterEvadeStatus:
         At the start of {OwnerName}'s turn, this status effect is removed.
 
         Only the first Counter status effect instance will be active.
+DisarmStatus:
+    Name : Disarmed
+    Description : |-
+        {OwnerName}'s attacks deal no damage.
+        At the end of {OwnerName}'s turn, {SelfName} is removed.
+    Brief : |-
+        {OwnerName}'s attacks deal no damage.
+        At the end of {OwnerName}'s turn, {SelfName} is removed.
+EmotionLevelStatus:
+    Name : Emotion Level
+    Description : |-
+        Test
+    Brief : |-
+        Test

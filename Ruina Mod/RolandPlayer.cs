@@ -93,6 +93,14 @@ namespace Ruina_Mod
         [EntityLogic(typeof(RolandPlayerDef))]
         public sealed class Roland : PlayerUnit
         {
+            protected override void OnEnterBattle(BattleController battle)
+            {
+                base.ReactBattleEvent<GameEventArgs>(base.Battle.BattleStarted, new Func<GameEventArgs, IEnumerable<BattleAction>>(this.OnBattleStarted));
+            }
+            private IEnumerable<BattleAction> OnBattleStarted(GameEventArgs args)
+            {
+                yield return new ApplyStatusEffectAction<EmotionLevelStatus>(this, 0);
+            }
         }
     }
 
