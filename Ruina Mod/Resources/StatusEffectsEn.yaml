@@ -119,6 +119,21 @@ DisarmStatus:
 EmotionLevelStatus:
     Name : Emotion Level
     Description : |-
-        Test
+        {OwnerName} is experiencing heightened emotions.
+        At the start of {OwnerName}'s turn, gain {BonusMana} <sprite="ManaSprite" name="C"> and draw {BonusDraw} card{BonusDraw:plural one='' other='s'}.
+        {Level}/{Count} |Emotion| needed to increase {DefaultSelfName} at the start of {OwnerName}'s turn.
+
+        Whenever {OwnerName} deals or takes attack damage, gain {HitEmotion} |Emotion|.
+        |Emotion| is not gained from attacks that target all enemies.
+        Whenever an enemy is defeated, {OwnerName} gains {EnemyDeathEmotion} |Emotion|.
+        When {OwnerName} reaches {DefaultSelfName} |e:2| and |e:4|, gain |e:1| <sprite="ManaSprite" name="C"> more at the start of the turn.
+        When {OwnerName} reaches {DefaultSelfName} |e:3| and |e:5|, draw |e:1| card more at the start of the turn.
     Brief : |-
-        Test
+        {OwnerName} is experiencing heightened emotions.
+        At the start of {OwnerName}'s turn, gain more <sprite="ManaSprite" name="C"> and draw more cards.
+
+        Whenever {OwnerName} deals or takes attack damage, gain {HitEmotion} |Emotion|.
+        |Emotion| is not gained from attacks that target all enemies.
+        Whenever an enemy is defeated, {OwnerName} gains {EnemyDeathEmotion} |Emotion|.
+        When {OwnerName} reaches {DefaultSelfName} |e:2| and |e:4|, gain |e:1| <sprite="ManaSprite" name="C"> more at the start of the turn.
+        When {OwnerName} reaches {DefaultSelfName} |e:3| and |e:5|, draw |e:1| card more at the start of the turn.

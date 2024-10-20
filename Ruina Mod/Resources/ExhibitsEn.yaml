@@ -2,12 +2,12 @@ Durandal:
     Name : 'Durandal'
     Description : |-
         Adds {BaseMana} to the mana base. Cards unique to |Roland| are added to the card pool.
-        Whenever you play {Value1} cards, gain {Value2} |Firepower| and {Value2} |Spirit|.
-        Remove {Value2} |Firepower| and {Value2} |Spirit| after playing the third card.
+        Whenever {Value1} cards are played, {PlayerName} gains {Value2} |Firepower| and {Value2} |Spirit|.
+        {PlayerName} loses {Value2} |Firepower| and {Value2} |Spirit| after the third card is played.
 PerceptionMask:
     Name: 'Perception-blocking Mask'
     Description : |-
         Adds {BaseMana} to the mana base. Cards unique to |Roland| are added to the card pool.
         At the start of {PlayerName}'s turn, gain {Value1} |Graze|.
-        Until after the first attack card is played each turn, attacks inflict life loss equal to their attack damage instead of dealing attack damage.
-    DetailText: "Attacks affected by |Perception-blocking Mask| are not affected by |Paralysed|."
+        Until after the first attack card is played each turn, {PlayerName}'s attacks inflict life loss equal to their attack damage instead of dealing attack damage.
+        Attacks affected by {SelfName} are not affected by |Paralysed|.

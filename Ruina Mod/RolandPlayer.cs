@@ -72,7 +72,7 @@ namespace Ruina_Mod
             Order: 0,
             UnlockLevel: 0,
             ModleName: "",
-            NarrativeColor: "#CCCCCC",
+            NarrativeColor: "#6A6A6A",
             IsSelectable: true,
             MaxHp: 80,
             InitialMana: new LBoL.Base.ManaGroup() { Colorless = 4 },
